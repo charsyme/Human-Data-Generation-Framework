@@ -13,4 +13,6 @@ This repository contains the code for generating the data described in "Efficien
 
 
 ## Installation
+```
 pip install -r requirements.txt
+```
