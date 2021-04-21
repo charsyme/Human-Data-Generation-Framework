@@ -3,14 +3,14 @@ This repository contains the code for generating the data described in "Efficien
 
 ## Requirements
 ```
-Python3
-Pyglet
-Pycocotools
-Opencv
-Matplotlib
-Scikit-image
-PyWavefront
-Pickle5
+* Python3
+* Pyglet
+* Pycocotools
+* Opencv
+* Matplotlib
+* Scikit-image
+* PyWavefront
+* Pickle5
 ```
 ## Installation
 pip install -r requirements.txt
