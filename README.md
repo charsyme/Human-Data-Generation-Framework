@@ -2,7 +2,6 @@
 This repository contains the code for generating the data described in "Efficient Realistic Data Generation Framework leveraging Deep Learning-based Human Digitization"
 
 ## Requirements
-```
 * Python3
 * Pyglet
 * Pycocotools
@@ -11,6 +10,7 @@ This repository contains the code for generating the data described in "Efficien
 * Scikit-image
 * PyWavefront
 * Pickle5
-```
+
+
 ## Installation
 pip install -r requirements.txt
