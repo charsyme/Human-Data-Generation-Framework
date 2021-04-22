@@ -27,9 +27,9 @@ The folder hierarchy should look like this: <br />
 ```
 ├─ background_images
    └─ in
-    └─ CityScapes
-       ├─ leftImg8Bit
-       └─ gtCoarse
+      └─ CityScapes
+         ├─ leftImg8Bit
+         └─ gtCoarse
 ```
         
 ## Citation
