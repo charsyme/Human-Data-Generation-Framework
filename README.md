@@ -38,7 +38,10 @@ The folder hierarchy should look like this:
 ```
 python create_background_images.py
 ```
-        
+3. Run the following script to generate the dataset
+```
+python create_dataset.py
+```   
 ## Citation
 If you make use of the dataset, please cite the following reference in any publications:
 ```
