@@ -10,7 +10,7 @@ This repository contains the code for generating the data described in "Efficien
 * Scikit-image
 * PyWavefront
 * Pickle5
-
+* Pillow
 
 ## Install the required packages
 ```
