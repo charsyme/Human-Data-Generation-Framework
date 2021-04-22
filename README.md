@@ -17,11 +17,11 @@ This repository contains the code for generating the data described in "Efficien
 pip install -r requirements.txt
 ```
 
-## Download the CityScapes dataset
+## Download and reformat the CityScapes dataset
 
-Download the CityScapes dataset from www.cityscapes-dataset.net <br />
-* RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
-* Annotation images: gtCoarse.zip <br />
+1. Download the CityScapes dataset from www.cityscapes-dataset.net <br />
+        * RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
+        * Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this: <br />
 ```
@@ -31,6 +31,7 @@ The folder hierarchy should look like this: <br />
          ├─ leftImg8Bit
          └─ gtCoarse
 ```
+1. Run 
         
 ## Citation
 If you make use of the dataset, please cite the following reference in any publications:
