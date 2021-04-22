@@ -26,10 +26,12 @@ pip install -r requirements.txt
 The folder hierarchy should look like this:
 ```
 ├─ background_images
-|  └─ in
-|    └─ CityScapes
-|       ├─ leftImg8Bit
-|       └─ gtCoarse
+|  ├─ in
+|  |  └─ CityScapes
+|  |      ├─ leftImg8Bit
+|  |      └─ gtCoarse
+|  └─ out
+|      
 ...
 ```
 2. Run the following script to reformat the CityScapes dataset
