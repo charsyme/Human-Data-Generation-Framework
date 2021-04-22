@@ -25,7 +25,6 @@ Download the CityScapes dataset from www.cityscapes-dataset.net <br />
 
 The folder hierarchy should look like this: <br />
 ```
-
 ├─ background_images <br />
    └─ in <br />
     └─ CityScapes <br />
