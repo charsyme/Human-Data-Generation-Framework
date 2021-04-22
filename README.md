@@ -24,12 +24,15 @@ Download the CityScapes dataset from www.cityscapes-dataset.net <br />
 * Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this: <br />
+```
+
 ├─ background_images <br />
-    └─ in <br />
-      └─ CityScapes <br />
-          ├─ leftImg8Bit <br />
-          ├─ gtCoarse <br />
-          
+   └─ in <br />
+    └─ CityScapes <br />
+       ├─ leftImg8Bit <br />
+       └─ gtCoarse <br />
+```
+        
 ## Citation
 If you make use of the dataset, please cite the following reference in any publications:
 ```
