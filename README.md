@@ -16,3 +16,19 @@ This repository contains the code for generating the data described in "Efficien
 ```
 pip install -r requirements.txt
 ```
+
+## Download CityScapes dataset
+
+Download link: www.cityscapes-dataset.net
+RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip
+Annotation images: gtCoarse.zip
+
+The folder hierarchy should look like this:
+-.
+  -background_images
+    -in
+      -\textbf{CityScapes}
+        -leftImg8Bit
+        -gtCoarse
+        
+        
