@@ -24,11 +24,11 @@ RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <b
 Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this: <br />
--. <br />
->-background_images <br />
+> -. <br />
+> -background_images <br />
 >> -in <br />
-      -\textbf{CityScapes} <br />
-        -leftImg8Bit <br />
-        -gtCoarse <br />
+>>> -CityScapes <br />
+>>>> -leftImg8Bit <br />
+>>>> -gtCoarse <br />
         
         
