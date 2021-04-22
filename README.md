@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 Download the CityScapes dataset from www.cityscapes-dataset.net <br />
 * RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
-* annotation images: gtCoarse.zip <br />
+* Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this: <br />
 ├─ background_images . <br />
