@@ -25,9 +25,9 @@ Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this: <br />
 |── background_images . <br />
-      ── in <br />
-         ── CityScapes <br />
-            ── leftImg8Bit <br />
-            ── gtCoarse <br />
+      └── in <br />
+         └── CityScapes <br />
+            ├── leftImg8Bit <br />
+            |── gtCoarse <br />
         
         
