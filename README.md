@@ -12,12 +12,12 @@ This repository contains the code for generating the data described in "Efficien
 * Pickle5
 
 
-## Installation
+## Install the required packages
 ```
 pip install -r requirements.txt
 ```
 
-## Download CityScapes dataset
+## Download the CityScapes dataset
 
 Download the CityScapes dataset from www.cityscapes-dataset.net <br />
 RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
