@@ -7,6 +7,7 @@ import pickle5 as pickle
 import glob
 import cv2
 import argparse
+
 #Keep only images from CityScapes (a) without humans (persons/riders) (b) with roads/sidewalks/terrain
 def add_cityscapes_background_imgs(imgs_dir_in='./background_images/in/CityScapes',
                                    imgs_dir_out='./background_images/out'):
@@ -28,8 +29,8 @@ def add_cityscapes_background_imgs(imgs_dir_in='./background_images/in/CityScape
         segm_path_in = segm_imgs[i]
 
         segm_path_out = os.path.join(imgs_dir_out, 'labels', out_filename)
-        rgn_path_in = glob.glob(imgs_dir_in + '/leftImg8bit/*/*/' + rgb_filename)
-        rgn_path_out = os.path.join(imgs_dir_out, 'rgb', out_filename)
+        rgb_path_in = glob.glob(imgs_dir_in + '/leftImg8bit/*/*/' + rgb_filename)[0]
+        rgb_path_out = os.path.join(imgs_dir_out, 'rgb', out_filename)
         img = cv2.imread(segm_path_in)
         msks_n = []
         for i in range(len(labels_rm)):
@@ -49,7 +50,7 @@ def add_cityscapes_background_imgs(imgs_dir_in='./background_images/in/CityScape
 
         if (not np.any(msk_n > 0)) and (np.sum(msk_p > 0) > 0.2 * msk_p.shape[0] * msk_p.shape[1]):
             copyfile(segm_path_in, segm_path_out)
-            copyfile(rgn_path_in, rgn_path_out)
+            copyfile(rgb_path_in, rgb_path_out)
 
 
 def generate_img_ids(imgs_dir='./background_images/out/rgb', imgs_dict_path='./background_images/img_ids.pkl', id_start=0):
@@ -78,4 +79,6 @@ if __name__ == "__main__":
     # Reformate CitySCapes Dataset
     add_cityscapes_background_imgs(imgs_dir_in=opt.imgs_dir_in,
                                    imgs_dir_out=opt.imgs_dir_out)
-    #generate_img_ids(imgs_dir_in=opt.imgs_dir_in, imgs_dict_path=opt.imgs_dict_path, id_start=1)
+    '''
+    generate_img_ids(imgs_dir_in=opt.imgs_dir_in, imgs_dict_path=opt.imgs_dict_path, id_start=1)
+    '''
