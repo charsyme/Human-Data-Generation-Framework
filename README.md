@@ -23,7 +23,7 @@ pip install -r requirements.txt
         * RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
         * Annotation images: gtCoarse.zip <br />
 
-  The folder hierarchy should look like this: <br />
+The folder hierarchy should look like this:
 ```
 ├─ background_images
    └─ in
