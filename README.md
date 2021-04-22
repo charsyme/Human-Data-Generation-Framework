@@ -36,8 +36,7 @@ If you make use of the dataset, please cite the following reference in any publi
 @inproceedings{symeonidis2021data,
   title={Efficient Realistic Data Generation Framework leveraging Deep Learning-based Human Digitization},
   author={Symeonidis, C. and Nousi, P. and Tosidis, P. and Tsampazis, K. and Passalis, N. and Tefas, A. and Nikolaidis, N.}
-  booktitle={Proceedings of the International Conference on Engineering Applications of Neural Networks},
-  year={2021},
-  organization={IEEE}
+  booktitle={Proceedings of the International Conference on Engineering Applications of Neural Networks (EANN)},
+  year={2021}
 }
 ```
