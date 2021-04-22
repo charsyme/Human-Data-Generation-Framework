@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Download CityScapes dataset
 
-Download link: www.cityscapes-dataset.net <br />
+Download the CityScapes dataset from www.cityscapes-dataset.net <br />
 RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
 Annotation images: gtCoarse.zip <br />
 
