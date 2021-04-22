@@ -20,8 +20,8 @@ pip install -r requirements.txt
 ## Download and reformat the CityScapes dataset
 
 1. Download the CityScapes dataset from www.cityscapes-dataset.net <br />
-* RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
-* Annotation images: gtCoarse.zip <br />
+    * RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
+    * Annotation images: gtCoarse.zip <br />
 
 The folder hierarchy should look like this:
 ```
@@ -31,7 +31,10 @@ The folder hierarchy should look like this:
          ├─ leftImg8Bit
          └─ gtCoarse
 ```
-2. Run 
+2. Run the following script to reformat the CityScapes dataset
+```
+python create_background_images.py
+```
         
 ## Citation
 If you make use of the dataset, please cite the following reference in any publications:
