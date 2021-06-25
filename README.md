@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Download and reformat the CityScapes dataset and the human models
 
-1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated using code from [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using as input images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing), which are provided under the Apache 2.0 licence. 
+1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated through [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing) as input, which are provided under the Apache 2.0 licence. 
 ```
 mkdir -p ./background_images/CityScapes/in
 mkdir -p ./background_images/CityScapes/out
