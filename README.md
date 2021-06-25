@@ -17,9 +17,17 @@ This repository contains the code for generating the data described in "Efficien
 pip install -r requirements.txt
 ```
 
-## Download and reformat the CityScapes dataset
+## Download and reformat the CityScapes dataset and the human models
 
-1. Download the CityScapes dataset from www.cityscapes-dataset.net <br />
+1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated using code from [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using as input images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing), which are provided under the Apache 2.0 licence. 
+```
+mkdir -p ./background_images/CityScapes/in
+mkdir -p ./background_images/CityScapes/out
+chmod +x download_files.sh
+./download_files.sh
+```
+
+2. Download the CityScapes dataset from www.cityscapes-dataset.net <br />
     * RGB images: (a) leftImg8bit_trainvaltest.zip,  (b) leftImg8bit_trainextra.zip <br />
     * Annotation images: gtCoarse.zip <br />
 
@@ -35,21 +43,14 @@ The folder hierarchy should look like this:
 ...
 ```
 
-3. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated using code from [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using as input images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing), which are provided under the Apache 2.0 licence. 
-```
-chmod +x download_files.sh
-./download_files.sh
+3. Run the following script to reformat the CityScapes dataset.
 ```  
-
-```
-2. Run the following script to reformat the CityScapes dataset.
-```
 python create_background_images.py
 ```
-3. Run the following script to generate the dataset.
-```
+4. Run the following script to generate the dataset.
+```  
 python create_dataset.py
-```   
+```
 ## Citation
 If you make use of the dataset, please cite the following reference in any publications:
 ```
