@@ -19,16 +19,7 @@ pip install -r requirements.txt
 
 ## Download and reformat the CityScapes dataset and the human models
 
-<<<<<<< HEAD
 1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated through [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing) as input, which are provided under the Apache 2.0 licence. 
-
-=======
-<<<<<<< HEAD
-1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated using code from [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using as input images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing), which are provided under the Apache 2.0 licence. 
-=======
-1. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated through [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing) as input, which are provided under the Apache 2.0 licence. 
->>>>>>> db2e16eb6170a7d83074358d600479277754f5c5
->>>>>>> 498e6da2547a4117a2f03ab5d4e842d6dbbf4b53
 ```
 mkdir -p ./background_images/CityScapes/in
 mkdir -p ./background_images/CityScapes/out
@@ -53,16 +44,11 @@ The folder hierarchy should look like this:
 ```
 
 3. Run the following script to reformat the CityScapes dataset.
-```  
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 498e6da2547a4117a2f03ab5d4e842d6dbbf4b53
+```
 python reformat_cityscapes.py
->>>>>>> db2e16eb6170a7d83074358d600479277754f5c5
 python create_background_images.py
 ```
+
 4. Run the following script to generate the dataset.
 ```  
 python create_dataset.py
