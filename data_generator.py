@@ -4,11 +4,11 @@ import os
 
 import math
 
-from pyglet.gl import *
+import pyglet.gl
 from pywavefront import visualization, Wavefront
 import numpy as np
 from pyglet.window import key, mouse, pyglet
-import pickle5 as pickle
+import pickle 
 import cv2
 import csv
 from background import Background
@@ -124,30 +124,30 @@ class Data_generator(pyglet.window.Window):
 
     def on_resize(self, width, height):
         viewport_width, viewport_height = self.get_framebuffer_size()
-        glViewport(0, 0, viewport_width, viewport_height)
-        glMatrixMode(GL_PROJECTION)
-        glLoadIdentity()
+        pyglet.gl.glViewport(0, 0, viewport_width, viewport_height)
+        pyglet.gl.glMatrixMode(pyglet.gl.GL_PROJECTION)
+        pyglet.gl.glLoadIdentity()
         angleOfView = 45.0
         imageAspectRatio = float(width) / height
         near = 1.
         far = 40.
-        gluPerspective(angleOfView, imageAspectRatio, near, far)
-        glMatrixMode(GL_MODELVIEW)
+        pyglet.gl.gluPerspective(angleOfView, imageAspectRatio, near, far)
+        pyglet.gl.glMatrixMode(pyglet.gl.GL_MODELVIEW)
         return True
 
     def move_camera(self):
-        glPushMatrix()
+        pyglet.gl.glPushMatrix()
         cam_tr = np.zeros(3)
         cam_rot = np.zeros(3)
         cam_tr[0] = 0
         cam_tr[1] = -math.sin(0) * self.cam_dist + 1
         cam_tr[2] = -math.cos(0) * self.cam_dist
-        glLoadIdentity()
-        glTranslatef(cam_tr[0], cam_tr[1] - self.y_tr_offset, cam_tr[2])
-        glRotatef(cam_rot[2], 0.0, 0.0, 1.0)
-        glRotatef(cam_rot[0], 1.0, 0.0, 0.0)
-        glRotatef(cam_rot[1], 0.0, 1.0, 0.0)
-        glPopMatrix()
+        pyglet.gl.glLoadIdentity()
+        pyglet.gl.glTranslatef(cam_tr[0], cam_tr[1] - self.y_tr_offset, cam_tr[2])
+        pyglet.gl.glRotatef(cam_rot[2], 0.0, 0.0, 1.0)
+        pyglet.gl.glRotatef(cam_rot[0], 1.0, 0.0, 0.0)
+        pyglet.gl.glRotatef(cam_rot[1], 0.0, 1.0, 0.0)
+        pyglet.gl.glPopMatrix()
 
     def load_meshes_and_data(self):
         for i in range(len(self.models_data)):
@@ -170,16 +170,16 @@ class Data_generator(pyglet.window.Window):
 
     def on_draw(self):
         self.clear()
-        glLoadIdentity()
-        glLightfv(GL_LIGHT0, GL_POSITION, self.lightfv(-1.0, 1.0, 1.0, 0.0))
-        glLightfv(GL_LIGHT0, GL_AMBIENT, self.lightfv(0.2, 0.2, 0.2, 1.0))
-        glLightfv(GL_LIGHT0, GL_DIFFUSE, self.lightfv(0.5, 0.5, 0.5, 1.0))
-        glEnable(GL_LIGHT0)
-        glEnable(GL_LIGHTING)
-        glEnable(GL_COLOR_MATERIAL)
-        glEnable(GL_DEPTH_TEST)
-        glShadeModel(GL_SMOOTH)
-        glMatrixMode(GL_MODELVIEW)
+        pyglet.gl.glLoadIdentity()
+        pyglet.gl.glLightfv(pyglet.gl.GL_LIGHT0, pyglet.gl.GL_POSITION, self.lightfv(-1.0, 1.0, 1.0, 0.0))
+        pyglet.gl.glLightfv(pyglet.gl.GL_LIGHT0, pyglet.gl.GL_AMBIENT, self.lightfv(0.2, 0.2, 0.2, 1.0))
+        pyglet.gl.glLightfv(pyglet.gl.GL_LIGHT0, pyglet.gl.GL_DIFFUSE, self.lightfv(0.5, 0.5, 0.5, 1.0))
+        pyglet.gl.glEnable(pyglet.gl.GL_LIGHT0)
+        pyglet.gl.glEnable(pyglet.gl.GL_LIGHTING)
+        pyglet.gl.glEnable(pyglet.gl.GL_COLOR_MATERIAL)
+        pyglet.gl.glEnable(pyglet.gl.GL_DEPTH_TEST)
+        pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
+        pyglet.gl.glMatrixMode(pyglet.gl.GL_MODELVIEW)
         self.move_camera()
         self.background.draw()
         for i in range(len(self.models_data)):
@@ -220,14 +220,14 @@ class Data_generator(pyglet.window.Window):
             self.first = False
 
         for i in range(len(self.models_data)):
-            glPushMatrix()
+            pyglet.gl.glPushMatrix()
             transl_3D = self.models_data[i]['pos_3D'] + self.models_data[i]['transformation']['translation']
-            glTranslatef(transl_3D[0], transl_3D[1], transl_3D[2])
+            pyglet.gl.glTranslatef(transl_3D[0], transl_3D[1], transl_3D[2])
             rot_3D = [
                 self.models_data[i]['rotation']['pitch'] + self.models_data[i]['transformation']['rotation']['pitch'],
                 self.models_data[i]['rotation']['yaw'] + self.models_data[i]['transformation']['rotation']['yaw']]
-            glRotatef(rot_3D[0], 1.0, 0.0, 0.0)
-            glRotatef(rot_3D[1], 0.0, 1.0, 0.0)
+            pyglet.gl.glRotatef(rot_3D[0], 1.0, 0.0, 0.0)
+            pyglet.gl.glRotatef(rot_3D[1], 0.0, 1.0, 0.0)
             visualization.draw(self.models_data[i]['mesh'])
             pmat = (pyglet.gl.GLdouble * 16)()
             mvmat = (pyglet.gl.GLdouble * 16)()
@@ -241,7 +241,7 @@ class Data_generator(pyglet.window.Window):
                 win_x = pyglet.gl.GLdouble()
                 win_y = pyglet.gl.GLdouble()
                 win_z = pyglet.gl.GLdouble()
-                gluProject(self.models_data[i]['joints_3D'][key][0], self.models_data[i]['joints_3D'][key][1],
+                pyglet.gl.gluProject(self.models_data[i]['joints_3D'][key][0], self.models_data[i]['joints_3D'][key][1],
                            self.models_data[i]['joints_3D'][key][2], mvmat, pmat, view, win_x, win_y, win_z)
                 joints_2D[key] = np.asarray([win_x.value, self.camera_size[1] - win_y.value]).astype(np.int)
             self.models_data[i]['joints_2D'] = joints_2D
@@ -251,12 +251,12 @@ class Data_generator(pyglet.window.Window):
                 win_y = pyglet.gl.GLdouble()
                 win_z = pyglet.gl.GLdouble()
                 c3D = self.models_data[i]['box_3D'][j]
-                gluProject(c3D[0], c3D[1], c3D[2], mvmat, pmat, view, win_x, win_y, win_z)
+                pyglet.gl.gluProject(c3D[0], c3D[1], c3D[2], mvmat, pmat, view, win_x, win_y, win_z)
                 bbox_2D_c[j] = np.asarray([win_x.value, self.camera_size[1] - win_y.value, win_z.value]).astype(np.int)
             bbox2D.append(np.array([np.min(bbox_2D_c[:, 0]), np.min(bbox_2D_c[:, 1])]))
             bbox2D.append(np.array([np.max(bbox_2D_c[:, 0]), np.max(bbox_2D_c[:, 1])]))
             self.models_data[i]['box_2D'] = np.asarray(bbox2D)
-            glPopMatrix()
+            pyglet.gl.glPopMatrix()
 
     def update(self, dt):
         if self.shot_ok > 1:

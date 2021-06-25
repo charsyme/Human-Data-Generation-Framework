@@ -1,10 +1,19 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
-from pycocotools.coco import COCO
 import numpy as np
-import matplotlib.pyplot as plt
-from shutil import copyfile
-import pickle5 as pickle
-import glob
+import shutil 
+import pickle 
 import cv2
 import argparse
 import csv
@@ -59,8 +68,8 @@ def add_cityscapes_background_imgs(rgb_in='./background_images/CityScapes/in/all
             msk_p = cv2.bitwise_or(msk_p, msks_p[i])
 
         if (not np.any(msk_n > 0)) and (np.sum(msk_p > 0) > 0.2 * msk_p.shape[0] * msk_p.shape[1]):
-            copyfile(segm_path_in, segm_path_out)
-            copyfile(rgb_path_in, rgb_path_out)
+            shutil.move(segm_path_in, segm_path_out)
+            shutil.move(rgb_path_in, rgb_path_out)
 
 
 def generate_img_ids(imgs_dir='./background_images/out/rgb', imgs_dict_path='./background_images/img_ids.pkl', id_start=0):

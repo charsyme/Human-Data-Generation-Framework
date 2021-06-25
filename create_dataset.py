@@ -4,7 +4,7 @@ import argparse
 import gc
 from data_generator import Data_generator
 import pyglet
-import pickle5 as pickle
+import pickle 
 import json
 from datetime import date
 import cv2
