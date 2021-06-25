@@ -45,6 +45,7 @@ The folder hierarchy should look like this:
 
 3. Run the following script to reformat the CityScapes dataset.
 ```  
+python reformat_cityscapes.py
 python create_background_images.py
 ```
 4. Run the following script to generate the dataset.
