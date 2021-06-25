@@ -38,7 +38,7 @@ The folder hierarchy should look like this:
 |     └─ in
 |     |   ├─ leftImg8Bit
 |     |   └─ gtCoarse
-|     └─ out
+|        └─ out
 |      
 ...
 ```
