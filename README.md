@@ -26,19 +26,27 @@ pip install -r requirements.txt
 The folder hierarchy should look like this:
 ```
 ├─ background_images
-|  ├─ in
-|  |  └─ CityScapes
-|  |      ├─ leftImg8Bit
-|  |      └─ gtCoarse
-|  └─ out
+|  ├─ CityScapes
+|     └─ in
+|     |   ├─ leftImg8Bit
+|     |   └─ gtCoarse
+|     └─ out
 |      
 ...
 ```
-2. Run the following script to reformat the CityScapes dataset
+
+3. Run the following shell script in order to download the 3D human models and other files neccessary for the generation process. The 3D human models are generated using code from [https://github.com/shunsukesaito/PIFu](https://github.com/shunsukesaito/PIFu), which is provided under the MIT licence, using as input images from the [Clothing Co-Parsing (CCP) dataset](https://github.com/bearpaw/clothing-co-parsing), which are provided under the Apache 2.0 licence. 
+```
+chmod +x download_files.sh
+./download_files.sh
+```  
+
+```
+2. Run the following script to reformat the CityScapes dataset.
 ```
 python create_background_images.py
 ```
-3. Run the following script to generate the dataset
+3. Run the following script to generate the dataset.
 ```
 python create_dataset.py
 ```   

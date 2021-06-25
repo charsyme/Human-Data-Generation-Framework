@@ -63,6 +63,7 @@ class Data_generator(pyglet.window.Window):
         for j in range(len(back_img_ids)):
             if self.background_img_fl == back_img_ids[j]['filename']:
                 self.background_img_id = back_img_ids[j]['id']
+                print(self.background_img_id)
 
     def csv_dt_parser(self, csv_path):
         data = []
@@ -303,8 +304,8 @@ class Data_generator(pyglet.window.Window):
         annot_dir = os.path.join(self.data_out_dir, 'labels')
         if not os.path.exists(annot_dir):
             os.mkdir(annot_dir)
-        f_lab = os.path.join(annot_dir, self.csv_name + '.csv')
-        f_img = os.path.join(images_dir, self.csv_name + '.png')
+        f_lab = os.path.join(annot_dir, '00'+str(int(self.csv_name.replace('data_',''))+600000 - 1) + '.csv')
+        f_img = os.path.join(images_dir, '00'+str(int(self.csv_name.replace('data_',''))+600000 - 1) + '.png')
         pyglet.image.get_buffer_manager().get_color_buffer().save(f_img)
         with open(f_lab, 'w') as csv_lab:
             annot_spec = 'back_img_name,back_img_id,model_name,model_id,bb_x,bb_y,bb_w,bb_h'

@@ -7,30 +7,40 @@ import pickle5 as pickle
 import glob
 import cv2
 import argparse
+import csv
 
 #Keep only images from CityScapes (a) without humans (persons/riders) (b) with roads/sidewalks/terrain
-def add_cityscapes_background_imgs(imgs_dir_in='./background_images/in/CityScapes',
+def add_cityscapes_background_imgs(rgb_in='./background_images/CityScapes/in/all/rgb', segm_in='./background_images/CityScapes/in/all/segm', human_colors = './background_images/CityScapes/human_colormap.txt', placement_colors='./background_images/CityScapes/locations_colormap.txt',
                                    imgs_dir_out='./background_images/out'):
 
-    if not os.path.exists(os.path.join(imgs_dir_out, 'labels')):
-        os.makedirs(os.path.join(imgs_dir_out, 'labels'))
+    if not os.path.exists(os.path.join(imgs_dir_out, 'segm')):
+        os.makedirs(os.path.join(imgs_dir_out, 'segm'))
     if not os.path.exists(os.path.join(imgs_dir_out, 'rgb')):
         os.makedirs(os.path.join(imgs_dir_out, 'rgb'))
-    segm_imgs = glob.glob(imgs_dir_in + '/gtCoarse/*/*/**gtCoarse_color.png', recursive=True)
+    img_names = [f for f in os.listdir(segm_in) if os.path.isfile(os.path.join(segm_in, f))]
+
     #Pixel colors for humans (persons/riders)
-    labels_rm = [np.array([60, 20, 220]), np.array([255, 0, 0])]
+    with open(human_colors) as csvfile:
+        labels_rm = []
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            row_ints = [int(i) for i in row]
+            labels_rm.append(np.array(row_ints))
+
     #Pixel colors for roads/sidewalks/terrain
-    labels_pm = [np.array([128, 64, 128]), np.array([232, 35, 244]), np.array([152, 251, 152])]
+    with open(placement_colors) as csvfile:
+        labels_pm = []
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            row_ints = [int(i) for i in row]
+            labels_pm.append(np.array(row_ints))
 
-    for i in range(len(segm_imgs)):
-        segm_filename = os.path.basename(segm_imgs[i])
-        rgb_filename = segm_filename.replace('gtCoarse_color', 'leftImg8bit')
-        out_filename = segm_filename.replace('_gtCoarse_color', '')
-        segm_path_in = segm_imgs[i]
+    for i in range(len(img_names)):
 
-        segm_path_out = os.path.join(imgs_dir_out, 'labels', out_filename)
-        rgb_path_in = glob.glob(imgs_dir_in + '/leftImg8bit/*/*/' + rgb_filename)[0]
-        rgb_path_out = os.path.join(imgs_dir_out, 'rgb', out_filename)
+        rgb_path_in = os.path.join(rgb_in,img_names[i])
+        segm_path_in = os.path.join(segm_in,img_names[i])
+        rgb_path_out = os.path.join(imgs_dir_out,'rgb',img_names[i])
+        segm_path_out = os.path.join(imgs_dir_out,'segm',img_names[i])
         img = cv2.imread(segm_path_in)
         msks_n = []
         for i in range(len(labels_rm)):
@@ -71,13 +81,14 @@ def generate_img_ids(imgs_dir='./background_images/out/rgb', imgs_dict_path='./b
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-imgs_dict_path', type=str, default='./background_images/out/img_ids.pkl')
-    parser.add_argument('-imgs_dir_in', type=str, default='./background_images/in/CityScapes')
-    parser.add_argument('-imgs_dir_out', type=str, default='./background_images/out')
+    parser.add_argument('-imgs_dict_path', type=str, default='./background_images/CityScapes/img_ids.pkl')
+    parser.add_argument('-rgb_in', type=str, default='./background_images/CityScapes/in/all/rgb')
+    parser.add_argument('-segm_in', type=str, default='./background_images/CityScapes/in/all/segm')
+    parser.add_argument('-imgs_dir_out', type=str, default='./background_images/CityScapes/out')
     opt = parser.parse_args()
 
     # Reformate CitySCapes Dataset
-    add_cityscapes_background_imgs(imgs_dir_in=opt.imgs_dir_in,
+    add_cityscapes_background_imgs(rgb_in=opt.rgb_in, segm_in = opt.segm_in,
                                    imgs_dir_out=opt.imgs_dir_out)
     '''
     generate_img_ids(imgs_dir_in=opt.imgs_dir_in, imgs_dict_path=opt.imgs_dict_path, id_start=1)

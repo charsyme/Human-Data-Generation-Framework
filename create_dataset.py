@@ -150,10 +150,10 @@ def to_coco_format(annots_dir, model_ids_path, data_ids_path, split, json_path, 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-models_dir', type=str, default='./3D_models')
-    parser.add_argument('-back_imgs_dir', type=str, default='./background_images/out')
-    parser.add_argument('-models_dict_path', type=str, default='./3D_models/model_ids.pkl')
-    parser.add_argument('-back_imgs_dict_path', type=str, default='./background_images/out/img_ids.pkl')
+    parser.add_argument('-models_dir', type=str, default='./human_models')
+    parser.add_argument('-back_imgs_dir', type=str, default='./background_images/CityScapes/out')
+    parser.add_argument('-models_dict_path', type=str, default='./human_models/model_ids.pkl')
+    parser.add_argument('-back_imgs_dict_path', type=str, default='./background_images/CityScapes/img_ids.pkl')
     parser.add_argument('-csv_dir', type=str, default='./csv')
     parser.add_argument('-dataset_dir', type=str, default='./dataset')
 

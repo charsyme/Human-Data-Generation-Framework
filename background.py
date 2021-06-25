@@ -118,7 +118,8 @@ class Background:
 
     def select_texture(self):
         texture_file = os.path.join(self.img_dir, 'rgb', self.img_fl)
-        labels_file = os.path.join(self.img_dir, 'labels', self.img_fl)
+        labels_file = os.path.join(self.img_dir, 'segm', self.img_fl)
+        print(self.img_fl)
         self.texture = self.loadTexture(texture_file)
         self.labels = cv2.imread(labels_file)
         new_size = (1020, 340)
